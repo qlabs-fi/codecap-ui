@@ -1,0 +1,169 @@
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: black;
+
+  /* Change Autocomplete styles in Chrome*/
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+#app {
+	@apply w-full;
+  @apply bg-black;
+	@apply text-gray-300;
+
+  /* see https://app.haikei.app/ */
+  background: linear-gradient(rgba(50, 50, 50, 0.8),rgba(50, 50, 50, 0.4)), url("../assets/backgrounds/1.svg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: scroll;
+	aspect-ratio: 960/300;
+}
+
+/* hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+	display: none;
+}
+
+button {
+  @apply focus:outline-none;
+}
+
+/*
+* progress bar
+*/
+
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  @apply bg-blue-600 opacity-75;
+
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+}
+
+/*
+* fake loading
+*/
+
+@keyframes breathe {
+	0% {
+		opacity: 0.1;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0.1;
+	}
+}
+
+.fake-line {
+	@apply bg-gradient-to-br;
+	@apply from-gray-700;
+	@apply via-gray-700;
+	@apply to-gray-700;
+	@apply rounded-md;
+
+	animation: 1.5s ease-in-out infinite alternate breathe;
+}
+
+/*
+* inputs
+*/
+
+/* number arrows: Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* number arrows: Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/*
+* transitions
+*/
+
+/* fade */
+.fade-enter-active,
+.fade-leave-active {
+    @apply opacity-0;
+    @apply transition-opacity;
+    @apply duration-400;
+}
+
+.fade-enter-to {
+    @apply opacity-100;
+}
+
+.fade-leave-to {
+    @apply opacity-0;
+}
+
+/* left slide */
+.slide-left-enter-from {
+	opacity: 0;
+	transform: translate(-50%, 0);
+}
+
+.slide-left-enter-active {
+	transition: all 0.3s ease-out;
+}
+
+.slide-left-leave-to {
+	opacity: 0;
+	transform: translate(50%, 0);
+}
+
+.slide-left-leave-active {
+	transition: all 0.3s ease-in;
+}
+
+/* right slide */
+.slide-right-enter-from {
+	opacity: 0;
+	transform: translate(50%, 0);
+}
+
+.slide-right-enter-active {
+	transition: all 0.3s ease-out;
+}
+
+.slide-right-leave-to {
+	opacity: 0;
+	transform: translate(-50%, 0);
+}
+
+.slide-right-leave-active {
+	transition: all 0.3s ease-in;
+}
